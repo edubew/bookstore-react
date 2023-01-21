@@ -1,0 +1,9 @@
+.categories__btn {
+  padding: 1rem;
+  margin: 2rem;
+  background: rgb(13, 132, 212);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+}
