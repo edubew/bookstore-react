@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-// import Categories from './components/Categories/Categories';
+import Categories from './components/Categories/Categories';
 import BookList from './components/Books/BookList';
 
 const App = () => (
@@ -9,7 +9,7 @@ const App = () => (
     <Navbar />
     <Routes>
       <Route path="/" element={<BookList />} />
-      {/* <Route path="/categories" element={<Categories />} /> */}
+      <Route path="/categories" element={<Categories />} />
     </Routes>
   </Router>
 );
