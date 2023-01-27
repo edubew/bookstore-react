@@ -1,4 +1,3 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # Bookstore React App 
 
@@ -15,7 +14,7 @@
   <summary>FrontEnd</summary>
   <ul>
     <li><a href="https://reactjs.org/docs/getting-started.html">React</a></li>
-    <li><a href="https://reactjs.org/docs/getting-started.html">Redux</a></li>
+    <li><a href="https://redux-toolkit.js.org/">Redux</a></li>
   </ul>
 </details>
 
@@ -80,7 +79,8 @@ npm start
 
 ## 🔭 Future Features
 
-- **Single Page App** - Add redux
+- **Connect to Redux**
+- **Connect to API**
 
 ## 🤝 Contributing
 
