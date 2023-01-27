@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const ADD_BOOK = 'bookstore-app-react/books/inputBook';
-const REMOVE_BOOK = 'bookstore-app-react/books/removeBook';
+const ADD_BOOK = 'bookstore-react/books/inputBook';
+const REMOVE_BOOK = 'bookstore-react/books/removeBook';
 
 const initialState = {
   books: [
