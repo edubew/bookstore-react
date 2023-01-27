@@ -18,9 +18,6 @@ const BookList = () => {
             />
           ))}
         </li>
-        {/* {books.map((book) => (
-          <Book key={book.id} id={book.id} book={book} />
-        ))} */}
       </ul>
       <InputBook />
     </div>
