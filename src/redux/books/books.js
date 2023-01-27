@@ -1,5 +1,5 @@
-const ADD_BOOK = "bookstore-app-react/books/InputBook";
-const REMOVE_BOOK = "bookstore-app-react/books/removeBook";
+const ADD_BOOK = 'bookstore-app-react/books/InputBook';
+const REMOVE_BOOK = 'bookstore-app-react/books/removeBook';
 
 const initialState = {
   books: [],
