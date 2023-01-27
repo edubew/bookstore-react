@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../../redux/books/books';
 
-const Book = ({ title, author, id }) => {
+const Books = ({ title, author, id }) => {
   const dispatch = useDispatch();
 
   const deleteBook = () => dispatch(removeBook(id));
@@ -24,15 +24,15 @@ const Book = ({ title, author, id }) => {
   );
 };
 
-export default Book;
+export default Books;
 
-Book.defaultProps = {
+Books.defaultProps = {
   title: PropTypes.string,
   author: PropTypes.string,
   id: PropTypes.string,
 };
 
-Book.propTypes = {
+Books.propTypes = {
   title: PropTypes.string,
   author: PropTypes.string,
   id: PropTypes.string,

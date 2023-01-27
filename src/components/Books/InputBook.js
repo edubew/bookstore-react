@@ -28,8 +28,8 @@ const InputBook = () => {
     <div className="input__container">
       <h1>ADD NEW BOOK</h1>
       <form>
-        <input type="text" name="name" placeholder="Book title..." value={state.title} required onChange={handleChange} />
-        <input type="text" name="name" placeholder="Author..." value={state.author} required onChange={handleChange} />
+        <input type="text" name="title" placeholder="Book title..." value={state.title} onChange={handleChange} required />
+        <input type="text" name="author" placeholder="Author..." value={state.author} onChange={handleChange} required />
         <button className="add__btn" type="submit" onClick={handleSubmit}>
           ADD BOOK
         </button>
