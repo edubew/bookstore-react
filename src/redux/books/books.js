@@ -3,7 +3,7 @@ import axios from "axios";
 const BOOKS_URL =
   "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/R9iogCYmIf2eEINhPNCJ/books";
 
-const ADD_BOOK = "bookstore-react/books/InputBook";
+const ADD_BOOK = "bookstore-react/books/inputBook";
 const REMOVE_BOOK = "bookstore-react/books/removeBook";
 const FETCH_BOOKS = "bookstore-react/books/fetchBooks";
 
@@ -36,7 +36,7 @@ export const fetchBooks = () => async (dispatch) => {
   }
 };
 
-export const InputBook = () => ({
+export const inputBook = () => ({
   title, author, item_id, category,
 }) => async (dispatch) => {
   try {
