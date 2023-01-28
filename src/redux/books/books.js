@@ -1,11 +1,11 @@
-import axios from "axios";
+/* eslint-disable camelcase */
+import axios from 'axios';
 
-const BOOKS_URL =
-  "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/R9iogCYmIf2eEINhPNCJ/books";
+const BOOKS_URL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/R9iogCYmIf2eEINhPNCJ/books';
 
-const ADD_BOOK = "bookstore-react/books/inputBook";
-const REMOVE_BOOK = "bookstore-react/books/removeBook";
-const FETCH_BOOKS = "bookstore-react/books/fetchBooks";
+const ADD_BOOK = 'bookstore-react/books/addBook';
+const REMOVE_BOOK = 'bookstore-react/books/removeBook';
+const FETCH_BOOKS = 'bookstore-react/books/fetchBooks';
 
 const initialState = [];
 
@@ -36,7 +36,7 @@ export const fetchBooks = () => async (dispatch) => {
   }
 };
 
-export const inputBook = () => ({
+export const addBook = ({
   title, author, item_id, category,
 }) => async (dispatch) => {
   try {
@@ -54,4 +54,5 @@ export const inputBook = () => ({
 
 export const removeBook = (id) => async (dispatch) => {
   await axios.delete(`${BOOKS_URL}/${id}`);
+  dispatch(fetchBooks());
 };
