@@ -37,8 +37,20 @@ export const fetchBooks = () => async (dispatch) => {
 };
 
 export const InputBook = () => ({
-  type: ADD_BOOK,
-});
+  title, author, item_id, category,
+}) => async (dispatch) => {
+  try {
+    await axios.post(BOOKS_URL, {
+      title,
+      author,
+      item_id,
+      category,
+    });
+    return dispatch(fetchBooks());
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
 
 export const removeBook = () => ({
   type: REMOVE_BOOK,
