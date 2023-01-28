@@ -52,6 +52,6 @@ export const InputBook = () => ({
   }
 };
 
-export const removeBook = () => ({
-  type: REMOVE_BOOK,
-});
+export const removeBook = (id) => async (dispatch) => {
+  await axios.delete(`${BOOKS_URL}/${id}`);
+};
