@@ -13,15 +13,13 @@ const BookList = () => {
   const addedBooks = useSelector((state) => state.books);
   return (
     <div>
-      {Object.keys(addedBooks).map((book) => (
-        (
-          <Books
-            key={book}
-            title={addedBooks[book][0].title}
-            author={addedBooks[book][0].author}
-            id={book}
-          />
-        )
+      {addedBooks.map((book) => (
+        <Books
+          key={book.item_id}
+          title={book.title}
+          author={book.author}
+          id={book.item_id}
+        />
       ))}
       <InputBook />
     </div>
