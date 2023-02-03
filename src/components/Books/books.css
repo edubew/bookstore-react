@@ -11,15 +11,15 @@
   margin-left: 5%;
   margin-right: 5%;
   padding: 1rem;
-    box-shadow: 20px 20px 30px 20px #e6e1e1;
+  box-shadow: 20px 20px 30px 20px #e6e1e1;
 }
 
-.book__content>small {
+.book__content > small {
   color: #999;
   font-weight: 800;
 }
 
-.book__content>h2 {
+.book__content > h2 {
   margin: 2px;
 }
 
@@ -33,7 +33,7 @@
   gap: 1rem;
 }
 
-.cta__container>button {
+.cta__container > button {
   padding: 0.6rem;
   border: none;
   color: blue;
@@ -100,7 +100,7 @@
   padding: 2rem;
 }
 
-.input__container>h1 {
+.input__container > h1 {
   color: #999;
 }
 
@@ -115,7 +115,7 @@ input {
   padding: 0.8rem;
 }
 
-.input__container>button {
+.input__container > button {
   padding: 0.8rem;
 }
 
