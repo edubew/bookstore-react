@@ -1,51 +1,29 @@
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 2.2rem;
-  box-shadow: 3px 8px 8px #999;
-}
-
-.logo {
-  text-decoration: none;
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: rgb(13, 132, 212);
-}
-
-nav {
-  display: flex;
-  gap: 2rem;
-  margin-right: 50%;
-}
-
-.nav__item {
-  text-decoration: none;
-  font-size: 1.1rem;
-  color: #000;
-}
-
-.nav__item:hover,
-.nav__item:focus {
-  color: gray;
+.booklist__container {
+  margin-top: 3rem;
 }
 
 .book__container {
+  display: grid;
+  grid-template-columns: 50% 25% 15%;
+  background: #fffcfc;
   list-style: none;
   margin-bottom: 1.2rem;
+  margin-left: 5%;
+  margin-right: 5%;
   padding: 1rem;
-  border: 1px solid rgb(235, 221, 221);
+  box-shadow: 20px 20px 30px 20px #e6e1e1;
 }
 
-.book__container > small {
+.book__content > small {
   color: #999;
   font-weight: 800;
 }
 
-.book__container > h2 {
+.book__content > h2 {
   margin: 2px;
 }
 
-.book__container p {
+.book__content p {
   margin-top: 2px;
   color: blue;
 }
@@ -59,6 +37,62 @@ nav {
   padding: 0.6rem;
   border: none;
   color: blue;
+}
+
+.progress__container {
+  display: grid;
+  grid-template-columns: 20% 2%;
+  gap: 2rem;
+  position: relative;
+  align-items: center;
+}
+
+.circle {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  border: 4px solid rgb(51, 182, 226);
+  border-width: 5px;
+}
+
+.percentage h1 {
+  font-size: 3rem;
+  font-weight: 200;
+  margin: 0;
+}
+
+.percentage p {
+  margin: 0;
+  color: rgb(139, 136, 136);
+}
+
+.progress__container::after {
+  content: "";
+  position: absolute;
+  right: 15%;
+  width: 2px;
+  height: 4rem;
+  background: rgb(223, 216, 216);
+}
+
+.current__chapter {
+  color: #999;
+  margin-bottom: 0;
+}
+
+.update__container p {
+  margin-top: 2px;
+  font-size: 1.1rem;
+}
+
+.progress__btn {
+  background-color: rgb(51, 182, 226);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 0.8rem;
+  margin-top: 1.5rem;
+  border-radius: 0.2rem;
 }
 
 .input__container {
@@ -88,6 +122,6 @@ input {
 .add__btn {
   color: #fff;
   font-weight: 600;
-  background: rgb(13, 132, 212);
+  background: rgb(51, 182, 226);
   border: none;
 }

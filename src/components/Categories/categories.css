@@ -7,3 +7,10 @@
   font-size: 1rem;
   border: none;
 }
+
+h3 {
+  padding: 1rem;
+  margin-top: 0;
+  font-style: oblique;
+  font-size: 2rem;
+}
