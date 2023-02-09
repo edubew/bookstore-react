@@ -14,7 +14,7 @@ const initialState = [];
 export default function booksReducer(state = initialState, action) {
   switch (action.type) {
     case `${ADD_BOOK}/fulfilled`:
-      return action.payload;
+      return state.concat(action.meta.arg);
 
     case `${FETCH_BOOKS}/fulfilled`:
       return Object.keys(action.payload).map((key) => {
@@ -28,7 +28,7 @@ export default function booksReducer(state = initialState, action) {
       });
 
     case `${REMOVE_BOOK}/fulfilled`:
-      return state.filter((book) => book.id !== action.payload);
+      return state.filter((book) => book.item_id !== action.payload.id);
     default:
       return state;
   }
@@ -57,4 +57,5 @@ export const removeBook = createAsyncThunk(REMOVE_BOOK, async (id) => {
       'Content-type': 'application/json',
     },
   });
+  return { id };
 });
