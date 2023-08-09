@@ -1,13 +1,31 @@
 /* eslint-disable camelcase */
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const BOOKS_URL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/CsWRehq3meHVyWZHy63J/books';
 
 // Actions
 const ADD_BOOK = 'bookstore-react/books/addBook';
 const REMOVE_BOOK = 'bookstore-react/books/removeBook';
+const EDIT_BOOK = 'bookstore-react/books/editBook';
+const ADD_COMMENT = 'bookstore-react/books/addComment';
 const FETCH_BOOKS = 'bookstore-react/books/fetchBooks';
 
+// Async Thunks
+export const fetchBooks = createAsyncThunk('bookstore-react/books/fetchBooks', async () => {
+  const response = await fetch(BOOKS_URL);
+  const data = await response.json();
+  return data;
+});
+
+export const addBook = createAsyncThunk('bookstore-react/books/addBook', async (book) => {
+  await fetch(BOOKS_URL, {
+    method: 'POST',
+    body: JSON.stringify(book),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+});
 const initialState = [];
 
 // Add Reducers
