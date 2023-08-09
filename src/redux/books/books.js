@@ -11,13 +11,13 @@ const ADD_COMMENT = 'bookstore-react/books/addComment';
 const FETCH_BOOKS = 'bookstore-react/books/fetchBooks';
 
 // Async Thunks
-export const fetchBooks = createAsyncThunk('bookstore-react/books/fetchBooks', async () => {
+export const fetchBooks = createAsyncThunk(FETCH_BOOKS, async () => {
   const response = await fetch(BOOKS_URL);
   const data = await response.json();
   return data;
 });
 
-export const addBook = createAsyncThunk('bookstore-react/books/addBook', async (book) => {
+export const addBook = createAsyncThunk(ADD_BOOK, async (book) => {
   await fetch(BOOKS_URL, {
     method: 'POST',
     body: JSON.stringify(book),
@@ -25,6 +25,72 @@ export const addBook = createAsyncThunk('bookstore-react/books/addBook', async (
       'Content-type': 'application/json',
     },
   });
+});
+
+export const removeBook = createAsyncThunk(REMOVE_BOOK, async (id) => {
+  await fetch(`${BOOKS_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+});
+
+// Async Thunk for editing a book
+export const editBook = createAsyncThunk(EDIT_BOOK, async ({ id, title, author, category }) => {
+  const bookData = {
+    title,
+    author,
+    category,
+  };
+
+  const response = await fetch(`${BOOKS_URL}/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(bookData),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    const errorMessage = await response.text();
+    throw new Error(errorMessage);
+  }
+
+  // Return the updated book data
+  const updatedBook = {
+    id,
+    ...bookData,
+  };
+
+  return updatedBook;
+});
+
+export const addComment = createAsyncThunk(ADD_COMMENT, async ({ bookId, comment }) => {
+  const commentData = {
+    comment,
+  };
+
+  const response = await fetch(`${BOOKS_URL}/${bookId}/comments`, {
+    method: 'POST',
+    body: JSON.stringify(commentData),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    const errorMessage = await response.text();
+    throw new Error(errorMessage);
+  }
+
+  // Return the added comment data
+  const addedComment = {
+    id: Math.random().toString(),
+    ...commentData,
+  };
+
+  return addedComment;
 });
 const initialState = [];
 
