@@ -10,6 +10,8 @@ const EDIT_BOOK = 'bookstore-react/books/editBook';
 const ADD_COMMENT = 'bookstore-react/books/addComment';
 const FETCH_BOOKS = 'bookstore-react/books/fetchBooks';
 
+const initialState = [];
+
 // Async Thunks
 export const fetchBooks = createAsyncThunk(FETCH_BOOKS, async () => {
   const response = await fetch(BOOKS_URL);
@@ -36,8 +38,10 @@ export const removeBook = createAsyncThunk(REMOVE_BOOK, async (id) => {
   });
 });
 
-// Async Thunk for editing a book
-export const editBook = createAsyncThunk(EDIT_BOOK, async ({ id, title, author, category }) => {
+// Async Thunk for editing a book and adding comments
+export const editBook = createAsyncThunk(EDIT_BOOK, async ({
+  id, title, author, category,
+}) => {
   const bookData = {
     title,
     author,
@@ -92,53 +96,57 @@ export const addComment = createAsyncThunk(ADD_COMMENT, async ({ bookId, comment
 
   return addedComment;
 });
-const initialState = [];
 
-// Add Reducers
-export default function booksReducer(state = initialState, action) {
-  switch (action.type) {
-    case `${ADD_BOOK}/fulfilled`:
-      return action.payload;
-
-    case `${FETCH_BOOKS}/fulfilled`:
-      return Object.keys(action.payload).map((key) => {
-        const { title, author, category } = action.payload[key][0];
-        return {
-          item_id: key,
-          title,
-          author,
-          category,
-        };
+// Redux slice for books
+const booksSlice = createSlice({
+  name: 'books',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBooks.fulfilled, (state, action) =>
+        // Update state with fetched books
+        Object.keys(action.payload).map((key) => {
+          const { title, author, category } = action.payload[key][0];
+          return {
+            item_id: key,
+            title,
+            author,
+            category,
+          };
+        }))
+      .addCase(addBook.fulfilled, (state, action) => {
+        // Book added successfully, update state by appending the new book
+        const addedBook = action.payload;
+        state.push(addedBook);
+      })
+      .addCase(removeBook.fulfilled, (state, action) =>
+        // Book removed successfully, update state by filtering out the removed book
+        state.filter((book) => book.item_id !== action.payload))
+      .addCase(editBook.fulfilled, (state, action) => {
+        // Book edited successfully, update state with the edited book
+        const {
+          id, title, author, category,
+        } = action.payload;
+        const bookToUpdate = state.find((book) => book.item_id === id);
+        if (bookToUpdate) {
+          bookToUpdate.title = title;
+          bookToUpdate.author = author;
+          bookToUpdate.category = category;
+        }
+      })
+      .addCase(addComment.fulfilled, (state, action) => {
+        // Comment added successfully, update state with the added comment
+        const { bookId, comment } = action.payload;
+        const bookToUpdate = state.find((book) => book.item_id === bookId);
+        if (bookToUpdate) {
+          if (!bookToUpdate.comments) {
+            bookToUpdate.comments = [];
+          }
+          bookToUpdate.comments.push(comment);
+        }
       });
-
-    case `${REMOVE_BOOK}/fulfilled`:
-      return state.filter((book) => book.id !== action.payload);
-    default:
-      return state;
-  }
-}
-
-export const fetchBooks = createAsyncThunk(FETCH_BOOKS, async () => {
-  const response = await fetch(BOOKS_URL);
-  const data = await response.json();
-  return data;
+  },
 });
 
-export const addBook = createAsyncThunk(ADD_BOOK, async (book) => {
-  await fetch(BOOKS_URL, {
-    method: 'POST',
-    body: JSON.stringify(book),
-    headers: {
-      'Content-type': 'application/json',
-    },
-  });
-});
-
-export const removeBook = createAsyncThunk(REMOVE_BOOK, async (id) => {
-  await fetch(`${BOOKS_URL}/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-type': 'application/json',
-    },
-  });
-});
+export default booksSlice.reducer;

@@ -1,29 +1,52 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+
 .booklist__container {
   margin-top: 3rem;
+  /* font-family: 'Acme', sans-serif; */
+  font-family: 'Preahvihear', sans-serif;
 }
 
 .book__container {
   display: grid;
-  grid-template-columns: 50% 25% 15%;
-  background: #fffcfc;
+  grid-template-columns: repeat(3, 1fr);
+  letter-spacing: 1px;
   list-style: none;
-  margin-bottom: 1.2rem;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 0 3% 1.2rem;
+  border-radius: 1rem;
   padding: 1rem;
-  box-shadow: 20px 20px 30px 20px #e6e1e1;
+  background-color: #faf6ef;
 }
 
-.book__content > small {
+.drop__shadow {
+  box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4);
+}
+
+.inner__shadow {
+  box-shadow: inset -10px -10px 10px rgba(174, 174, 192, 0.25), inset 10px 10px 10px #ffffff;
+}
+
+.banner {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.book__image img {
+  width: 6rem;
+  border-radius: 50%;
+}
+
+.content > small {
   color: #999;
   font-weight: 800;
 }
 
-.book__content > h2 {
+.content > h2 {
   margin: 2px;
 }
 
-.book__content p {
+.content p {
   margin-top: 2px;
   color: blue;
 }
@@ -35,8 +58,16 @@
 
 .cta__container > button {
   padding: 0.6rem;
-  border: none;
+  font-size: 0.9rem;
+  border-radius: 1rem;
   color: blue;
+  background: transparent;
+  border: 1px solid #ddc59b;
+}
+
+.cta__container > button:hover {
+  background-color: rgb(51, 182, 226);
+  color: #fff;
 }
 
 .progress__container {

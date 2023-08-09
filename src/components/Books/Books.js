@@ -1,27 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../../redux/books/books';
+import { editBook, removeBook } from '../../redux/books/books';
+import book from '../../assets/book.jpeg';
 
-const Books = ({
-  title, author, id,
-}) => {
+const Book = ({ title, author, id }) => {
   const dispatch = useDispatch();
 
-  const deleteBook = () => dispatch(removeBook(id));
+  const handleDeleteBook = () => {
+    dispatch(removeBook(id));
+  };
+
+  const handleEditBook = async () => {
+    try {
+      const editedBook = dispatch(editBook({ id, title, author }));
+      console.log('Edited Book:', editedBook);
+    } catch (error) {
+      console.error('Error editing book:', error);
+    }
+  };
 
   return (
-    <article className="book__container">
+    <article className="book__container drop__shadow inner__shadow">
       <div className="book__content">
-        <small>Fictional</small>
-        <h2>{title}</h2>
-        <p>{author}</p>
+        <div className="banner">
+          <div className="book__image">
+            <img src={book} alt="book" />
+          </div>
+          <div className="content">
+            <small>Fictional</small>
+            <h2>{title}</h2>
+            <p>{author}</p>
+          </div>
+        </div>
         <div className="cta__container">
-          <button type="submit">Comments</button>
-          <button type="submit" onClick={deleteBook}>
-            Remove
+          {/* <button type="button">View Comments</button> */}
+          <button type="button" onClick={handleDeleteBook}>
+            Remove Book
           </button>
-          <button type="submit">Edit</button>
+          <button type="button" onClick={handleEditBook}>
+            Edit Book
+          </button>
         </div>
       </div>
       <div className="progress__container">
@@ -34,24 +53,24 @@ const Books = ({
       <div className="update__container">
         <p className="current__chapter">CURRENT CHAPTER</p>
         <p>Chapter 17</p>
-        <button type="submit" className="progress__btn">
-          UPDATE PROGRESS
+        <button type="button" className="progress__btn">
+          Update Progress
         </button>
       </div>
     </article>
   );
 };
 
-export default Books;
+Book.defaultProps = {
+  title: '',
+  author: '',
+  id: '',
+};
 
-Books.defaultProps = {
+Book.propTypes = {
   title: PropTypes.string,
   author: PropTypes.string,
   id: PropTypes.string,
 };
 
-Books.propTypes = {
-  title: PropTypes.string,
-  author: PropTypes.string,
-  id: PropTypes.string,
-};
+export default Book;
