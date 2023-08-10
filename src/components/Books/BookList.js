@@ -6,11 +6,13 @@ import { fetchBooks } from '../../redux/books/books';
 
 const BookList = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchBooks());
   }, [dispatch]);
 
   const addedBooks = useSelector((state) => state.books);
+
   return (
     <div className="booklist__container">
       {addedBooks.map((book) => (

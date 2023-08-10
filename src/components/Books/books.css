@@ -12,19 +12,19 @@
   grid-template-columns: repeat(3, 1fr);
   letter-spacing: 1px;
   list-style: none;
-  margin: 0 3% 1.2rem;
+  margin: 0 3% 2rem;
   border-radius: 1rem;
   padding: 1rem;
-  background-color: #faf6ef;
+  background-color: #ecebe4;
 }
 
 .drop__shadow {
   box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4);
 }
 
-.inner__shadow {
+/* .inner__shadow {
   box-shadow: inset -10px -10px 10px rgba(174, 174, 192, 0.25), inset 10px 10px 10px #ffffff;
-}
+} */
 
 .banner {
   display: flex;
@@ -70,36 +70,32 @@
   color: #fff;
 }
 
-.progress__container {
-  display: grid;
-  grid-template-columns: 20% 2%;
-  gap: 2rem;
-  position: relative;
-  align-items: center;
+.progress__container p {
+  color: rgb(139, 136, 136);
 }
 
-.circle {
+/* .circle {
   width: 4.25rem;
   height: 4.25rem;
   border-radius: 50%;
   border: 4px solid rgb(51, 182, 226);
   border-width: 5px;
-}
+} */
 
-.percentage h1 {
+/* .percentage h1 {
   font-size: 3rem;
   font-weight: 200;
   margin: 0;
-}
+} */
 
-.percentage p {
+/* .percentage p {
   margin: 0;
   color: rgb(139, 136, 136);
-}
+} */
 
 .progress__container::after {
   content: "";
-  position: absolute;
+  /* position: absolute; */
   right: 15%;
   width: 2px;
   height: 4rem;
