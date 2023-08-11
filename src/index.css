@@ -15,6 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #eff2f9;
+  overflow-x: hidden;
 }
 
 code {
@@ -31,12 +32,12 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 2.2rem;
-  box-shadow: 1px 1px 1px rgb(218, 214, 214);
+  box-shadow: 3px 3px 10px rgb(218, 214, 214);
 }
 
 .logo {
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: rgb(51, 182, 226);
 }
@@ -51,6 +52,7 @@ nav {
   text-decoration: none;
   font-size: 1.1rem;
   right: 50%;
+  font-weight: 600;
   color: #000;
 }
 

@@ -8,7 +8,7 @@ const InputBook = () => {
   const [state, setState] = useState({
     title: '',
     author: '',
-    category: 'Fictional',
+    category: '',
   });
 
   const dispatch = useDispatch();
@@ -35,7 +35,12 @@ const InputBook = () => {
     }
     state.title = '';
     state.author = '';
+    state.category = '';
   };
+
+  const categoryOptions = [
+    'Fictional', 'Non-Fictional', 'Mystery', 'Thriller', 'Fantansy', 'Romance', 'Science Fiction', 'Short Story', 'Self-help',
+  ];
 
   return (
     <div className="input__container">
@@ -57,6 +62,17 @@ const InputBook = () => {
           required
           onChange={handleChange}
         />
+        <select
+          name="category"
+          value={state.category}
+          onChange={handleChange}
+        >
+          {categoryOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
         <button className="add__btn" type="submit">
           ADD BOOK
         </button>

@@ -73,7 +73,7 @@ const Book = ({ title, author, id }) => {
       </div>
 
       <div style={{ marginLeft: 150 }} className="progress__container">
-        <div style={{ width: 100}}>
+        <div style={{ width: 100 }}>
           <CircularProgressbar value={completionPercentage} text={`${completionPercentage}%`} />
         </div>
         <p>Completed</p>

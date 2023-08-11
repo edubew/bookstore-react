@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable camelcase */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -104,17 +105,15 @@ const booksSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBooks.fulfilled, (state, action) =>
-        // Update state with fetched books
-        Object.keys(action.payload).map((key) => {
-          const { title, author, category } = action.payload[key][0];
-          return {
-            item_id: key,
-            title,
-            author,
-            category,
-          };
-        }))
+      .addCase(fetchBooks.fulfilled, (state, action) => Object.keys(action.payload).map((key) => {
+        const { title, author, category } = action.payload[key][0];
+        return {
+          item_id: key,
+          title,
+          author,
+          category,
+        };
+      }))
       .addCase(addBook.fulfilled, (state, action) => {
         // Book added successfully, update state by appending the new book
         const addedBook = action.payload;
