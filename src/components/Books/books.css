@@ -1,29 +1,53 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+
 .booklist__container {
   margin-top: 3rem;
+
+  /* font-family: 'Acme', sans-serif; */
+  font-family: 'Preahvihear', sans-serif;
 }
 
 .book__container {
   display: grid;
-  grid-template-columns: 50% 25% 15%;
-  background: #fffcfc;
+  grid-template-columns: repeat(3, 1fr);
+  letter-spacing: 1px;
   list-style: none;
-  margin-bottom: 1.2rem;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 0 3% 3%;
+  border-radius: 1rem;
   padding: 1rem;
-  box-shadow: 20px 20px 30px 20px #e6e1e1;
+  background-color: #ecebe4;
 }
 
-.book__content > small {
+.drop__shadow {
+  box-shadow: -10px -10px 30px #fff, 10px 10px 30px rgba(174, 174, 192, 0.4);
+}
+
+/* .inner__shadow {
+  box-shadow: inset -10px -10px 10px rgba(174, 174, 192, 0.25), inset 10px 10px 10px #ffffff;
+} */
+
+.banner {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.book__image img {
+  width: 5rem;
+  border-radius: 50%;
+}
+
+.content > small {
   color: #999;
   font-weight: 800;
 }
 
-.book__content > h2 {
+.content > h2 {
   margin: 2px;
 }
 
-.book__content p {
+.content p {
   margin-top: 2px;
   color: blue;
 }
@@ -35,40 +59,32 @@
 
 .cta__container > button {
   padding: 0.6rem;
-  border: none;
+  font-size: 0.9rem;
+  border-radius: 1rem;
   color: blue;
+  background: transparent;
+  border: 1px solid #ddc59b;
 }
 
-.progress__container {
-  display: grid;
-  grid-template-columns: 20% 2%;
-  gap: 2rem;
-  position: relative;
-  align-items: center;
+.input__container > button {
+  padding: 0.8rem;
 }
 
-.circle {
-  width: 4.25rem;
-  height: 4.25rem;
-  border-radius: 50%;
-  border: 4px solid rgb(51, 182, 226);
-  border-width: 5px;
+.cta__container > button:hover {
+  background-color: rgb(51, 182, 226);
+  color: #fff;
 }
 
-.percentage h1 {
-  font-size: 3rem;
-  font-weight: 200;
-  margin: 0;
+.progress__container1 {
+  display: none;
 }
 
-.percentage p {
-  margin: 0;
+.progress__container p {
   color: rgb(139, 136, 136);
 }
 
 .progress__container::after {
   content: "";
-  position: absolute;
   right: 15%;
   width: 2px;
   height: 4rem;
@@ -106,16 +122,12 @@
 
 form {
   display: grid;
-  grid-template-columns: 1fr 0.5fr 0.2fr;
+  grid-template-columns: 1fr 1fr 0.5fr 0.4fr;
   gap: 1rem;
-  width: 80%;
+  width: 100%;
 }
 
 input {
-  padding: 0.8rem;
-}
-
-.input__container > button {
   padding: 0.8rem;
 }
 
@@ -124,4 +136,43 @@ input {
   font-weight: 600;
   background: rgb(51, 182, 226);
   border: none;
+}
+
+/* Media queries */
+@media only screen and (max-width: 675px) {
+  .book__container {
+    grid-template-columns: 1fr;
+    margin: 0 3% 5%;
+  }
+
+  .cta__container {
+    display: flex;
+  }
+
+  .progress__btn {
+    margin-top: 0.6rem;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  select {
+    padding: 0.8rem;
+  }
+
+  .add__btn {
+    padding: 0.8rem;
+  }
+
+  .progress__container {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 890px) and (min-width: 675px) {
+  .book__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
