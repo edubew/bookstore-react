@@ -23,10 +23,6 @@
   box-shadow: -10px -10px 30px #fff, 10px 10px 30px rgba(174, 174, 192, 0.4);
 }
 
-/* .inner__shadow {
-  box-shadow: inset -10px -10px 10px rgba(174, 174, 192, 0.25), inset 10px 10px 10px #ffffff;
-} */
-
 .banner {
   display: flex;
   gap: 1rem;
